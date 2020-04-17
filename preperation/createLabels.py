@@ -6,7 +6,7 @@ from __future__ import print_function
 import os
 import glob
 import sys
-from scipy.misc import imread, imsave
+from imageio import imread, imsave
 import numpy as np
 from numpngw import write_png
 

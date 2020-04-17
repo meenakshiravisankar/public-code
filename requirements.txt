@@ -1,0 +1,5 @@
+imageio
+scipy
+pillow
+numpngw
+pip3 install git+https://github.com/cocodataset/panopticapi.git
