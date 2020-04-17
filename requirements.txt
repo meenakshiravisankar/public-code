@@ -2,4 +2,6 @@ imageio
 scipy
 pillow
 numpngw
-pip3 install git+https://github.com/cocodataset/panopticapi.git
+git+https://github.com/cocodataset/panopticapi.git
+tqdm
+matplotlib
