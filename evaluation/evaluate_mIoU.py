@@ -75,21 +75,23 @@ def generalized_eval_ious(mat):
         notIgnored = [i for i in range(n) if not i==l]
         fp = np.longlong(mat[notIgnored,l].sum())
         denom = (tp + fp + fn)
-        if denom == 0:
-            print('error: denom is 0')
+        # if denom == 0:
+        #     print('error: denom is 0')
 
         ious[l] =  float(tp) / denom
     return ious
-
 
 def print_scores(ious, names, heading):
     print('---------------------------------------------')
     print(heading)
     print('---------------------------------------------')
     for (iou, name) in zip(ious, names):
-        print(f'{name}\t\t:{iou}')
+        iStr = ' {:<24} : {:<9}'
+        print(iStr.format(name, iou))
+        # print(f'{name}\t\t:{iou}')
     print('---------------------------------------------')
-    print(f'mIoU\t\t:{ious.mean()}')
+    print(iStr.format("mIoU", np.nanmean(ious)))
+    # print(f'mIoU\t\t:{np.nanmean(ious)}')
     print('---------------------------------------------')
 
 
@@ -165,8 +167,8 @@ def eval_ious(mat):
         notIgnored = [i for i in range(26) if not i==l]
         fp = np.longlong(mat[notIgnored,l].sum())
         denom = (tp + fp + fn)
-        if denom == 0:
-            print('error: denom is 0')
+        # if denom == 0:
+        #     print('error: denom is 0')
 
         ious[l] =  float(tp) / denom
 
