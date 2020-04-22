@@ -7,7 +7,8 @@ import numpy as np
 from multiprocessing import Pool
 import matplotlib.pyplot as plt
 import sys
-
+import warnings
+warnings.filterwarnings("ignore")
 res = 1080
 
 def get_args():

@@ -2,21 +2,23 @@ import glob
 import os
 import sys
 
-train_image_path = "idd_lite/leftImg8bit/train/"
-train_label_path = "idd_lite/gtFine/train/"
+index = ""+index+""
+train_image_path = "idd_segmentation_"+index+"/leftImg8bit/train/"
+train_label_path = "idd_segmentation_"+index+"/gtFine/train/"
 
-val_image_path = "idd_lite/leftImg8bit/val/"
-val_label_path = "idd_lite/gtFine/val/"
+val_image_path = "idd_segmentation_"+index+"/leftImg8bit/val/"
+val_label_path = "idd_segmentation_"+index+"/gtFine/val/"
 
-test_image_path = "idd_lite/leftImg8bit/test/"
+test_image_path = "idd_segmentation_"+index+"/leftImg8bit/test/"
 
 train_image_names = sorted(glob.glob(train_image_path+"*/*"))
-train_label_names = list(sorted(set(glob.glob(train_label_path+"*/*_label.png"))-set(glob.glob(train_label_path+"*/*_inst_label.png"))))
+train_label_names = sorted(glob.glob(train_label_path+"*/*_gtFine_labellevel3Ids.png"))
 
 val_image_names = sorted(glob.glob(val_image_path+"*/*"))
-val_label_names = list(sorted(set(glob.glob(val_label_path+"*/*_label.png"))-set(glob.glob(val_label_path+"*/*_inst_label.png"))))
+val_label_names = sorted(glob.glob(val_label_path+"*/*_gtFine_labellevel3Ids.png"))
 
 test_image_names = sorted(glob.glob(test_image_path+"*/*"))
+
 
 if len(train_image_names) != len(train_label_names):
     sys.exit("Train image size and label size are not same")
@@ -37,11 +39,11 @@ print("Number of test images ", len(test_image_names))
 # create directory
 if not os.path.exists("list/idd_lite"):
     os.makedirs("list/idd_lite")
-
+    
 # write to file
-train_f = open("list/idd_lite/train.lst", "w")
-val_f = open("list/idd_lite/val.lst", "w")
-test_f = open("list/idd_lite/test.lst", "w")
+train_f = open("list/idd/"+index+"/train.lst", "w")
+val_f = open("list/idd/"+index+"/val.lst", "w")
+test_f = open("list/idd/"+index+"/test.lst", "w")
 
 for i in range(train_size):
     train_image_name = os.path.split(train_image_names[i])[1]
