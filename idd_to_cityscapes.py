@@ -2,7 +2,7 @@ import glob
 import os
 import sys
 
-index = ""+index+""
+index = "1""
 train_image_path = "idd_segmentation_"+index+"/leftImg8bit/train/"
 train_label_path = "idd_segmentation_"+index+"/gtFine/train/"
 
@@ -39,7 +39,7 @@ print("Number of test images ", len(test_image_names))
 # create directory
 if not os.path.exists("list/idd_lite"):
     os.makedirs("list/idd_lite")
-    
+
 # write to file
 train_f = open("list/idd/"+index+"/train.lst", "w")
 val_f = open("list/idd/"+index+"/val.lst", "w")
@@ -52,7 +52,7 @@ for i in range(train_size):
 
     train_label_name = os.path.split(train_label_names[i])[1]
     pos = train_label_name.find("_")
-    train_label_name = train_label_name[:pos]    
+    train_label_name = train_label_name[:pos]
 
     if train_image_name != train_label_name:
         print("Ignoring ", train_image_name, train_label_name)
@@ -81,15 +81,15 @@ for i in range(val_size):
     val_entry+=val_image_names[i]
     val_entry+=3*" "
     val_entry+=val_label_names[i]
-    
+
     val_f.write(val_entry)
     val_f.write("\n")
 
 for i in range(test_size):
     test_entry = ""
     test_entry+=test_image_names[i]
-    
+
     test_f.write(test_entry)
     test_f.write("\n")
-    
+
 
