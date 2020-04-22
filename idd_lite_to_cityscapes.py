@@ -2,13 +2,17 @@ import glob
 import os
 import sys
 
-train_image_path = "idd_lite/leftImg8bit/train/"
-train_label_path = "idd_lite/gtFine/train/"
+# change these settings
+data_path = "../idd_lite"
+list_path = "../list/idd_lite"
 
-val_image_path = "idd_lite/leftImg8bit/val/"
-val_label_path = "idd_lite/gtFine/val/"
+train_image_path = data_path+"/leftImg8bit/train/"
+train_label_path = data_path+"/gtFine/train/"
 
-test_image_path = "idd_lite/leftImg8bit/test/"
+val_image_path = data_path+"/leftImg8bit/val/"
+val_label_path = data_path+"/gtFine/val/"
+
+test_image_path = data_path+"/leftImg8bit/test/"
 
 train_image_names = sorted(glob.glob(train_image_path+"*/*"))
 train_label_names = list(sorted(set(glob.glob(train_label_path+"*/*_label.png"))-set(glob.glob(train_label_path+"*/*_inst_label.png"))))
@@ -35,13 +39,13 @@ print("Number of val labels ", len(val_label_names))
 print("Number of test images ", len(test_image_names))
 
 # create directory
-if not os.path.exists("list/idd_lite"):
-    os.makedirs("list/idd_lite")
+if not os.path.exists(list_path):
+    os.makedirs(list_path)
 
 # write to file
-train_f = open("list/idd_lite/train.lst", "w")
-val_f = open("list/idd_lite/val.lst", "w")
-test_f = open("list/idd_lite/test.lst", "w")
+train_f = open(list_path+"/train.lst", "w")
+val_f = open(list_path+"/val.lst", "w")
+test_f = open(list_path+"/test.lst", "w")
 
 for i in range(train_size):
     train_image_name = os.path.split(train_image_names[i])[1]
