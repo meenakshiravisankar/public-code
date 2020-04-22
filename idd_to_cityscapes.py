@@ -4,8 +4,11 @@ import sys
 
 # change these settings
 index = "1"
-data_path = "../idd_segmentation_"+index
-list_path = "../list/idd/"+index
+if len(index)!=0:
+    index = "_"+index
+
+data_path = "../idd_segmentation"+index
+list_path = "../list/idd"
 
 train_image_path = data_path+"/leftImg8bit/train/"
 train_label_path = data_path+"/gtFine/train/"
@@ -44,9 +47,9 @@ if not os.path.exists(list_path):
     os.makedirs(list_path)
 
 # write to file
-train_f = open(list_path+"/train.lst", "w")
-val_f = open(list_path+"/val.lst", "w")
-test_f = open(list_path+"/test.lst", "w")
+train_f = open(list_path+"/train"+index+".lst", "w")
+val_f = open(list_path+"/val"+index+".lst", "w")
+test_f = open(list_path+"/test"+index+".lst", "w")
 
 for i in range(train_size):
     train_image_name = os.path.split(train_image_names[i])[1]
