@@ -81,7 +81,7 @@ Note : We train based on level3Id’s and only those labels which are mentioned 
 
 First generate label masks as described above. To view the ground truths / prediction masks at different levels of heirarchy use:
 ```bash
-python viewer/viewer.py ---datadir $ANUE
+python viewer/viewer.py ---data-dir $ANUE
 ```
 
 - ANUE has the folder path to the dataset or prediction masks with similar file/folder structure as dataset.
